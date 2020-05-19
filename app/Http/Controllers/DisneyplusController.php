@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Disneyplus;
-use PDF;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 use Illuminate\Http\Request;
 use Svg\Tag\Rect;
 
@@ -44,8 +44,9 @@ class DisneyplusController extends Controller
     public function downloadPDF($id)
     {
         $show = Disneyplus::find($id);
-        $pdf = PDF::loadView('pdf', compact('show'));
 
-        return $pdf->download('disney.pdf');
+        $pdf = \PDF::loadView('pdf', compact('show'));
+
+        return $pdf->stream('disney.pdf');
     }
 }
