@@ -22,4 +22,4 @@ Route::post('disneyplus', 'DisneyplusController@store')->name('disneyplus.store'
 
 Route::get('disneyplus', 'DisneyplusController@index')->name('disneyplus.index');
 Route::get('disneyplus/{id}', 'DisneyplusController@show')->name('disneyplus.show');
-Route::get('/downloadPDF/{id}', 'DisneyplusController@downloadPDF');
+Route::get('/downloadPDF/{id}', 'DisneyplusController@downloadPDF')->name('disneyplus.pdf');
