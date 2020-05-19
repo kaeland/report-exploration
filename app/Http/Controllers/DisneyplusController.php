@@ -13,7 +13,7 @@ class DisneyplusController extends Controller
     {
         $shows = Disneyplus::all();
 
-        return view('list', compact('shows'));
+        return view('index', compact('shows'));
     }
 
     public function create()
@@ -28,9 +28,9 @@ class DisneyplusController extends Controller
             'series' => 'required|max:255',
             'lead_actor' => 'required|max:255',
         ]);
-        Disneyplus::create($validatedData);
+        Disneyplus::create($request->all());
 
-        return redirect('/disneyplus')->with('success', 'Disney Plus Show is successfully saved');
+        return redirect("/disneyplus/{$request->id}");
     }
 
     public function show($id)
